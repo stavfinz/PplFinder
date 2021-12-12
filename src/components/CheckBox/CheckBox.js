@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useDebugValue } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import * as S from "./style";
 
 const CheckBox = ({ isChecked, onChange, label, value }) => {
-  const handleChange = () => {
-    onChange && onChange(value);
+ 
+  const handleChange = (event) => {
+    isChecked= event.target.checked;
+    onChange && onChange(value,isChecked);
   };
   return (
     <S.CheckBox>
@@ -16,5 +18,4 @@ const CheckBox = ({ isChecked, onChange, label, value }) => {
     </S.CheckBox>
   );
 };
-
 export default CheckBox;

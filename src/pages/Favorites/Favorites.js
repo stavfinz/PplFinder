@@ -5,22 +5,22 @@ import { usePeopleFetch } from "hooks";
 import * as S from "./style";
 
 
-const Home = () => {
+const Favorites = () => {
   const { users, isLoading } = usePeopleFetch();
 
   return (
-    <S.Home>
+    <S.Favorites>
       <S.Content>
         <S.Header>
           <Text size="64px" bold>
             PplFinder
           </Text>
         </S.Header>
-        <UserList users={users} isLoading={isLoading} isFavorites={false} >
+        <UserList users={users} isLoading={isLoading} isFavorites={true} >
         </UserList>
       </S.Content>
-    </S.Home>
+    </S.Favorites>
   );
 };
 
-export default Home;
+export default Favorites;
