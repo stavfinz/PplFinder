@@ -14,7 +14,7 @@ const UserList = ({ users, isLoading ,isFavorites}) => {
   const [currentUsers,setCurrentUsers] = useState([]);
   const [savedFavoriteUsers,setSavedFavoriteUsers] = useState(JSON.parse(localStorage.getItem("favorites")) || []);
   const [updated,setUpdated] = useState(false);
-
+  
 
   const handleMouseEnter = (index) => {
     setHoveredUserId(index);
@@ -52,7 +52,6 @@ const UserList = ({ users, isLoading ,isFavorites}) => {
       }else{//CheckBox isn't Signed
         setFilterCounter(filterCounter-1);
         setCurrentUsers([...savedFavoriteUsers.filter(user=>user.nat !== value)]);
-        setUpdated(!updated);
       }
     }
   };
@@ -65,7 +64,6 @@ const UserList = ({ users, isLoading ,isFavorites}) => {
         setCurrentUsers(savedFavoriteUsers);//Favorites page
     }
     localStorage.setItem("favorites",JSON.stringify(savedFavoriteUsers));
-    console.log(savedFavoriteUsers);
   });
 
   const handleClickFavorite = (isVisible) => {
@@ -80,7 +78,7 @@ const UserList = ({ users, isLoading ,isFavorites}) => {
         }
       }else{//Favorites page
         setSavedFavoriteUsers([...savedFavoriteUsers.filter(user=>user !==currentUsers[hoveredUserId])]);
-        
+        setCurrentUsers([...currentUsers.filter(user=>user !==currentUsers[hoveredUserId])]);
       } 
     }
   }
